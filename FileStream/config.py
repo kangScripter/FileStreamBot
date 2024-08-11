@@ -22,7 +22,7 @@ class Telegram:
     MULTI_CLIENT = True
     FLOG_CHANNEL = "-1002184628163"#int(env.get("FLOG_CHANNEL", None))   # Logs channel for file logs
     ULOG_CHANNEL = "-1002184628163" #int(env.get("ULOG_CHANNEL", None))   # Logs channel for user logs
-    MODE = env.get("MODE", "secondary")
+    MODE = env.get("MODE", "primary")
     SECONDARY = True if MODE.lower() == "secondary" else False
     AUTH_USERS = list(set(int(x) for x in str(env.get("AUTH_USERS", "")).split()))
 
