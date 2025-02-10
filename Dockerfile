@@ -1,11 +1,14 @@
-FROM python:3.11
+FROM python:3.10
 
-WORKDIR /app
-COPY . /app
+WORKDIR /usr/src/app
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN chmod 777 /usr/src/app
+RUN apt-get -qq update
+RUN apt-get -qq install -y --no-install-recommends curl git 
+
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 
 COPY . .
-
-CMD ["python", "-m", "FileStream"]
+CMD ["bash", "start.sh"]
